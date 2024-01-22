@@ -15,6 +15,9 @@ public class Picture
     private Square window;
     private Triangle roof;
     private Circle sun;
+    private Square ground;
+    private Square sky;
+    private Person guy;
     private boolean drawn;
 
     /**
@@ -26,6 +29,9 @@ public class Picture
         window = new Square();
         roof = new Triangle();  
         sun = new Circle();
+        ground = new Square();
+        sky = new Square();
+        guy = new Person();
         drawn = false;
     }
 
@@ -35,6 +41,13 @@ public class Picture
     public void draw()
     {
         if(!drawn) {
+            sky.changeColor("blue");
+            sky.moveHorizontal(-320);
+            sky.moveVertical(-320);
+            sky.changeSize(510);
+            sky.makeVisible();
+            
+            wall.changeColor("yellow");
             wall.moveHorizontal(-140);
             wall.moveVertical(20);
             wall.changeSize(120);
@@ -46,17 +59,33 @@ public class Picture
             window.changeSize(40);
             window.makeVisible();
     
+            roof.changeColor("red");
             roof.changeSize(60, 180);
             roof.moveHorizontal(20);
             roof.moveVertical(-60);
             roof.makeVisible();
     
-            sun.changeColor("yellow");
+            sun.changeColor("white");
             sun.moveHorizontal(100);
             sun.moveVertical(-40);
             sun.changeSize(80);
             sun.makeVisible();
             drawn = true;
+            
+            ground.changeColor("green");
+            ground.moveHorizontal(-320);
+            ground.moveVertical(130);
+            ground.changeSize(510);
+            ground.makeVisible();
+            drawn = true;
+            
+            guy.changeColor("black");
+            guy.moveHorizontal(30);
+            guy.moveVertical(18);
+            guy.changeSize(60,30);
+            guy.makeVisible();
+            drawn = true;
+            
         }
     }
 
@@ -65,10 +94,13 @@ public class Picture
      */
     public void setBlackAndWhite()
     {
+        sky.changeColor("white");
         wall.changeColor("black");
         window.changeColor("white");
         roof.changeColor("black");
         sun.changeColor("black");
+        guy.changeColor("black");
+        ground.changeColor("black");
     }
 
     /**
@@ -76,9 +108,12 @@ public class Picture
      */
     public void setColor()
     {
-        wall.changeColor("red");
+        sky.changeColor("blue");
+        wall.changeColor("yellow");
         window.changeColor("black");
-        roof.changeColor("green");
-        sun.changeColor("yellow");
+        roof.changeColor("red");
+        sun.changeColor("white");
+        guy.changeColor("black");
+        ground.changeColor("green");
     }
 }
